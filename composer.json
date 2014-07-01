@@ -1,4 +1,13 @@
 {
+    "name": "jim-at-jibba/bones-slim-idiorm",
+    "description": "Bones is a Slim/Idiorm/Twig/Foundation 5 Starter Boilerplate.",
+    "authors": [
+        {
+            "name": "James Best",
+            "email": "jim@justjibba.com"
+        }
+    ],
+    "minimum-stability": "dev",
     "require": {
         "slim/slim-skeleton": "dev-master",
         "j4mie/idiorm": "dev-develop"
