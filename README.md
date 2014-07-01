@@ -4,21 +4,21 @@ Bones Slim Idiorm Starter
 Bones is a Slim/Idiorm/Twig/Foundation 5 Starter Boilerplate. This application uses the slim-skeleton repo, Idiorm ORM, twig templating engine and Foundation 5 as the front-end framework.
 It also includes bower and gulp files making it quick and easy get get going.
 
-## Installation
+# Installation
 
-# Install Composer
+## Install Composer
 
 If you have not installed Composer, do that now.
 
 <http://getcomposer.org/doc/00-intro.md#installation>
 
-# Install Bower
+## Install Bower
 
 If you have not installed Bower, do that now.
 
 <http://bower.io/>
 
-# Install Node & NPM
+## Install Node & NPM
 
 If you have not installed Node, do that now.
 
