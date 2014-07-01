@@ -1,6 +1,9 @@
 {
     "name": "jim-at-jibba/bones-slim-idiorm",
     "description": "Bones is a Slim/Idiorm/Twig/Foundation 5 Starter Boilerplate.",
+    "keywords": ["microframework","rest","router"],
+    "homepage": "https://github.com/jim-at-jibba/Bones-Slim-Idiorm-Starter",
+    "license": "MIT",
     "authors": [
         {
             "name": "James Best",
@@ -9,6 +12,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
+        "php": ">=5.3.0",
         "slim/slim-skeleton": "dev-master",
         "j4mie/idiorm": "dev-develop"
     }
