@@ -1,0 +1,6 @@
+{
+    "require": {
+        "slim/slim-skeleton": "dev-master",
+        "j4mie/idiorm": "dev-develop"
+    }
+}

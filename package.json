@@ -1,0 +1,12 @@
+{
+    "devDependencies": {
+        "gulp": "^3.6.2",
+        "gulp-autoprefixer": "0.0.7",
+        "gulp-notify": "^1.2.6",
+        "gulp-ruby-sass": "^0.5.0",
+        "gulp-util": "^2.2.14",
+        "gulp-concat": "^2.2.0",
+        "gulp-strip-debug": "^0.3.0",
+        "gulp-uglify": "^0.3.0"
+    }
+}
