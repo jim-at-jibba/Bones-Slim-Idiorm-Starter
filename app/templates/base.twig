@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Foundation 5</title>
+
+    <link rel="stylesheet" href="/css/styles.css"/>
+
+
+    <!--CDN for dev only. Use custom build for production - http://modernizr.com/download/-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.min.js"></script>
+
+</head>
+<body>
+<!-- Nav Bar -->
+<div class="regionwrap topbar">
+    <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+            <li class="name">
+                <h1><a href="#"></a></h1>
+            </li>
+            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+
+        <section class="top-bar-section">
+            <!-- Right Nav Section -->
+            <ul class="right">
+                <li class="active"><a href="{{ baseUrl() }}/posts">Journal Entries</a></li>
+                <li><a href="{{ baseUrl() }}/users">Users</a></li>
+                {% if hasIdentity %}
+                    <li><a href="{{ baseUrl() }}/logout">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ baseUrl() }}/login">Login</a></li>
+                {% endif %}
+            </ul>
+
+            <!-- Left Nav Section -->
+            <ul class="left" style="color: white;">
+                <li>
+                    <strong>Logged {% if hasIdentity %}In {% else %}Out </strong>{% endif %}
+                </li>
+                <li>
+                    <strong> {{ role|capitalize }}</strong>.
+                </li>
+            </ul>
+        </section>
+    </nav>
+</div>
+<!-- End Nav -->
+<div class="regionWrap mainContent">
+    <div class="row">
+
+        {% if (flash['error']) is defined %}
+        <div data-alert class="alert-box alert round">
+            {{ flash['error'] }}
+            <a href="#" class="close">&times;</a>
+        </div>
+        {% elseif (flash['LoggedIn']) is defined %}
+            <div data-alert class="alert-box secondary round">
+                {{ flash['LoggedIn'] }}
+                <a href="#" class="close">&times;</a>
+            </div>
+        {% elseif (flash['deleted']) is defined %}
+            <div data-alert class="alert-box success round">
+                {{ flash['deleted'] }}
+                <a href="#" class="close">&times;</a>
+            </div>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </div>
+</div>
+
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="/js/script.js"></script>
+
+
+<script>
+    $(document).foundation();
+</script>
+</body>
+</html>

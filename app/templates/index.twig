@@ -1,0 +1,12 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    <p>
+        You are currently <strong>Logged {% if hasIdentity %}In{% else %}Out</strong>{% endif %}.
+    </p>
+    <p>
+        Your current role is <strong>{{ role|capitalize }}</strong>.
+    </p>
+
+{% endblock %}
