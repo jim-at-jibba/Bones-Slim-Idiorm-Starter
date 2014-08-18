@@ -7,6 +7,9 @@
         "gulp-util": "^2.2.14",
         "gulp-concat": "^2.2.0",
         "gulp-strip-debug": "^0.3.0",
-        "gulp-uglify": "^0.3.0"
+        "gulp-uglify": "^0.3.0",
+        "gulp-changed": "1.0.0",
+        "browser-sync": "~0.8.2",
+        "gulp-imagemin": "^0.6.2"
     }
 }
