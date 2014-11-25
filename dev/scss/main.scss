@@ -1,0 +1,67 @@
+// justjibba grumpasaurus scss structure | MIT License | github.com/jim-at-jibba/grumpasaurus-scss
+
+//----------------------------------------------------------------------------------*\
+// Main.scss
+// Contains an import section for libraries, core, and modules, the inbox,
+// and a shame section for quick fixes and hacks
+//----------------------------------------------------------------------------------*/
+
+//----------------------------------*\
+// Reset - Normalize.css
+//----------------------------------*/
+
+ @import "base/normalize";
+
+//----------------------------------*\
+// Optional Extras
+//----------------------------------*/
+
+// Bourbon - http://bourbon.io/
+//@import "bourbon/bourbon";
+
+// Font-awesome - Install via bower
+//@import "libs/font-awesome/_font-awesome";
+
+
+
+//----------------------------------*\
+// CONFIG MODULES
+//----------------------------------*/
+
+@import "helpers/variables";
+@import "helpers/functions";
+@import "helpers/mixins";
+
+//----------------------------------*\
+// PARTIALS
+//----------------------------------*/
+
+@import "base/components";
+@import "base/pages";
+@import "layout/grid";
+@import "layout/header";
+@import "layout/navigation";
+@import "layout/footer";
+
+//----------------------------------*\
+// OBJECTS & MODULES
+//----------------------------------*/
+
+@import "helpers/helpers";
+@import "base/typography";
+@import "base/modules";
+
+
+//----------------------------------------------------------------------------------*\
+// INBOX
+//----------------------------------------------------------------------------------*/
+
+// ----- The inbox allows developers, and those not actively working on the CSS, 
+// to quickly add styles that are easily seen by the maintainer of the file.
+
+
+//----------------------------------------------------------------------------------*\
+// SHAME
+//----------------------------------------------------------------------------------*/
+
+// Need to add a quick fix, hack, or questionable technique?  Add it here, fix it later.
