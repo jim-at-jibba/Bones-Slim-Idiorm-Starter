@@ -33,6 +33,26 @@ $base-spacing: $base-line-height * 1em;
 $base-z-index: 0;
 
 //----------------------------------*\
+// Breakpoints
+//----------------------------------*/
+/* max-width 640px, mobile-only styles, use when QAing mobile issues */
+$small-only: max-width 40em;
+/* min-width 641px, medium screens */
+$medium-up: 40.063em;
+/* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
+$medium-only: 40.063em 64em;
+/* min-width 1025px, large screens */
+$large-up:64.063em;
+/* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
+$large-only: 64.063em 90em;
+/* min-width 1441px, xlarge screens */
+$xlarge-up: 90.063em;
+/* min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues */
+$xlarge-only:90.063em 120em;
+/* min-width 1921px, xxlarge screens */
+$xxlarge-up: 120.063em;
+
+//----------------------------------*\
 // Colors
 //----------------------------------*/
 $blue: #00a3e8;
