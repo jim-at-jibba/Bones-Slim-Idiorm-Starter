@@ -1,8 +1,8 @@
 var gulp = require('gulp');
 
 gulp.task('watch', ['setWatch'], function() {
-	gulp.watch('src/scss/**', ['compass']);
-	gulp.watch('src/img/**', ['images']);
-	gulp.watch('src/js/**', ['scripts']);
+	gulp.watch('dev/scss/**', ['compass']);
+	gulp.watch('dev/img/**', ['images']);
+	gulp.watch('dev/js/**', ['scripts']);
 	// Note: The browserify task handles js recompiling with watchify
 });
