@@ -1,5 +1,5 @@
 
-var sass = require('gulp-ruby-sass');
+var sass = require('gulp-sass');
 var prefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var gulp         = require('gulp');
