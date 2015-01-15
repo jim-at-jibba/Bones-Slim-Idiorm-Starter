@@ -1,6 +1,7 @@
 
 var sass = require('gulp-ruby-sass');
 var prefixer = require('gulp-autoprefixer');
+var sourcemaps = require('gulp-sourcemaps');
 var gulp         = require('gulp');
 var notify       = require('gulp-notify');
 var handleErrors = require('../util/handleErrors');
@@ -12,10 +13,13 @@ var sassDir = 'dev/scss';
 var targetCSSDir = 'public/css';
 
 //Styles
-gulp.task('styles', function(){
-    return gulp.src(sassDir + '/styles.scss')
-        .pipe(sass({ style: 'extended' }).on('error', handleErrors))
-        .pipe(prefixer('last 10 version'))
-        .pipe(gulp.dest(targetCSSDir))
-        .pipe(notify({ message: 'All done, oh great one!'}));
+gulp.task('styles', function () {
+    gulp.src(sassDir + '/main.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            style: 'compressed',
+            errLogToConsole: true
+        })).on('error', handleErrors)
+        .pipe(sourcemaps.write('./maps'))
+        .pipe(gulp.dest(targetCSSDir));
 });
