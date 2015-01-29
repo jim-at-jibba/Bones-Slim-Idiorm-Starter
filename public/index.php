@@ -1,8 +1,8 @@
 <?php
     session_cache_limiter( FALSE );
-//    session_start(); //Start session for flash message use.
+    //    session_start(); //Start session for flash message use.
     date_default_timezone_set( 'UTC' );
-    //error_reporting( -1 );
+        //error_reporting( -1 );
     ini_set( 'display_errors', 1 );
     ini_set( 'display_startup_errors', 1 );
 
@@ -16,7 +16,28 @@
     define("TEMPLATEDIR", ROOT . "app" . DS . "templates" . DS);
 
 
-    require '../app/config/config.php';
+    /**
+     * Init application mode
+     */
+    if (empty($_ENV['SLIM_MODE'])) {
+        $_ENV['SLIM_MODE'] = (getenv('SLIM_MODE'))
+        ? getenv('SLIM_MODE') : 'development';
+    }
+
+
+    /**
+     * Load configuration
+     */
+
+    $configFile = ROOT . '/app/config/' . $_ENV['SLIM_MODE'] . '.php';
+
+    if (is_readable($configFile)) {
+        require_once $configFile;
+    } else {
+        require_once ROOT . '/app/config/default.php';
+    }
+
+
     require '../vendor/autoload.php';
 
     use JeremyKendall\Password\PasswordValidator;
@@ -34,7 +55,7 @@
         // middleware, which this example does
         'cookies.encrypt'    => true,
         'cookies.secret_key' => 'FZr2ucE7eu5AB31p73QsaSjSIG5jhnssjgABlxlVeNV3nRjLt',
-    ) );
+        ) );
 
     //DB set up
     ORM::configure( 'mysql:host=localhost;dbname=' . DBNAME );
@@ -54,57 +75,57 @@
 
     // Handle the possible 403 the middleware can throw
     $app->error(
-        function ( \Exception $e ) use ( $app ) {
-            if ($e instanceof HttpForbiddenException) {
-                return $app->render( '403.twig', array ( 'e' => $e ), 403 );
-            }
+                function ( \Exception $e ) use ( $app ) {
+                    if ($e instanceof HttpForbiddenException) {
+                        return $app->render( '403.twig', array ( 'e' => $e ), 403 );
+                    }
             // You should handle other exceptions here, not throw them
-            throw $e;
-        }
-    );
+                    throw $e;
+                }
+                );
 
 
     // Grabbing a few things I want in each view
     $app->hook(
-        'slim.before.dispatch',
-        function () use ( $app ) {
-            $hasIdentity = $app->auth->hasIdentity();
-            $identity    = $app->auth->getIdentity();
-            $role        = ( $hasIdentity ) ? $identity['role'] : 'guest';
-            $memberClass = ( $role == 'guest' ) ? 'danger' : 'success';
-            $adminClass  = ( $role != 'admin' ) ? 'danger' : 'success';
+               'slim.before.dispatch',
+               function () use ( $app ) {
+                $hasIdentity = $app->auth->hasIdentity();
+                $identity    = $app->auth->getIdentity();
+                $role        = ( $hasIdentity ) ? $identity['role'] : 'guest';
+                $memberClass = ( $role == 'guest' ) ? 'danger' : 'success';
+                $adminClass  = ( $role != 'admin' ) ? 'danger' : 'success';
 
-            $data = array (
-                'hasIdentity' => $hasIdentity,
-                'role'        => $role,
-                'identity'    => $identity,
-                'memberClass' => $memberClass,
-                'adminClass'  => $adminClass,
-            );
+                $data = array (
+                               'hasIdentity' => $hasIdentity,
+                               'role'        => $role,
+                               'identity'    => $identity,
+                               'memberClass' => $memberClass,
+                               'adminClass'  => $adminClass,
+                               );
 //            var_dump($data);
-            $app->view->appendData( $data );
-        }
-    );
+                $app->view->appendData( $data );
+            }
+            );
 
 
     // Create monolog logger and store logger in container as singleton
     // (Singleton resources retrieve the same log resource definition each time)
     $app->container->singleton( 'log', function () {
-            $log = new \Monolog\Logger( 'slim-skeleton' );
-            $log->pushHandler( new \Monolog\Handler\StreamHandler( '../logs/app.log', \Monolog\Logger::DEBUG ) );
+        $log = new \Monolog\Logger( 'slim-skeleton' );
+        $log->pushHandler( new \Monolog\Handler\StreamHandler( '../logs/app.log', \Monolog\Logger::DEBUG ) );
 
-            return $log;
-        }
+        return $log;
+    }
     );
 
     // Prepare view
     $app->view( new \Slim\Views\Twig() );
     $app->view->parserOptions    = array ( 'charset'          => 'utf-8',
-                                           'cache'            => realpath( '../templates/cache' ),
-                                           'auto_reload'      => TRUE,
-                                           'strict_variables' => FALSE,
-                                           'autoescape'       => TRUE
-    );
+                                          'cache'            => realpath( '../templates/cache' ),
+                                          'auto_reload'      => TRUE,
+                                          'strict_variables' => FALSE,
+                                          'autoescape'       => TRUE
+                                          );
     $app->view->parserExtensions = array ( new \Slim\Views\TwigExtension() );
 
     // Define routes
@@ -112,12 +133,12 @@
     //get all
     $app->get( '/', function () use ( $app ) {
             // Sample log message
-            $app->log->info( "Slim-Skeleton '/' route" );
+        $app->log->info( "Slim-Skeleton '/' route" );
             //Pull data from DB
             //$users = ORM::for_table('users')->find_result_set();
             // Render index view
-            $app->render( 'index.twig' );
-        }
+        $app->render( 'index.twig' );
+    }
     );
 
     /**

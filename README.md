@@ -50,4 +50,8 @@ Finally install the gulp dependencies, run the gulp command and you are good to 
 
 This is only a starting point and is here to get you off the ground quickly. Copy this repo, pull it apart and create awesome things.
 
+## The Environment Variable
+
+The config file is loaded depending on the Environment Variable which needs to be set in the VHosts File. Add the following `SetEnv SLIM_MODE development`
+
 
